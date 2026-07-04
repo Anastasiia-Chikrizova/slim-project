@@ -1,0 +1,47 @@
+@import "../../styles/common.scss";
+.radio {
+  &Box {
+    @include flex(center, center);
+    margin-left: 30px;
+    height: 20px;
+    padding-left: 26px;
+  }
+  &Label {
+    @include flex(flex-start, center);
+    font-family: Verdana;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.04em;
+    color: getColor("text-secondary");
+  }
+  &Button {
+    margin: 0;
+
+    &:checked + .radioLabel > .customRadio::before {
+      background-color: getColor("accent");
+    }
+    &:checked + .radioLabel {
+      font-weight: 700;
+
+      color: getColor("accent");
+    }
+  }
+}
+
+.customRadio {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  margin-left: -26px;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+}

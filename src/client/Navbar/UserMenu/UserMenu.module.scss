@@ -1,0 +1,49 @@
+@import "src/shared/styles/common";
+
+// .row {
+//   display: flex;
+//   align-items: center;
+// }
+
+.navlink {
+  font-weight: 700;
+  font-size: 14px;
+  text-align: right;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  color: getColor("text-secondary");
+
+  cursor: pointer;
+}
+
+.userMenu {
+  @include desktop {
+    border-left: 2px solid getColor("border-color");
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+// .navlink:first-child {
+//   @include desktop {
+//     border-left: 2px solid #e0e0e0;
+//     padding-left: 20px;
+//   }
+// }
+.navlink:not(:last-child) {
+  margin-right: 15px;
+}
+
+.navlinkActive {
+  @extend .navlink;
+  font-weight: 700;
+  font-size: 14px;
+  text-align: right;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  color: getColor("text-primary");
+}

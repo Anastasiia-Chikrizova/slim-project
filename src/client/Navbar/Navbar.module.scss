@@ -1,0 +1,83 @@
+@import "../../shared/styles/common";
+
+.row {
+  @include flex(space-between, center);
+  border-bottom: 2px solid getColor("border-color");
+  @include tablet {
+    border:none;
+    
+  }
+  @include desktop {
+   
+    justify-content: start;
+    align-items: baseline;
+  }
+}
+.rowLog{
+  @include flex(space-between, center);
+
+  @include desktop {
+
+    justify-content: start;
+    align-items: baseline;
+  }
+}
+
+.nav {
+  @include tablet {
+    border-bottom: 2px solid getColor("border-color");
+  }
+
+  @include desktop {
+    border-bottom: none;
+    padding: 80px 90px;
+    // position: absolute;
+  }
+}
+
+.logo {
+  padding: 18px 0;
+  margin-left: 15px;
+
+  @include tablet {
+    margin-right: auto;
+  }
+  @include desktop {
+    margin: 0;
+    padding-right: 20px;
+  }
+}
+
+.menuRow {
+  margin-right: 15px;
+  display: flex;
+
+  @include tablet {
+    order: 3;
+  }
+
+  @include desktop {
+    order: inherit;
+  }
+}
+
+.infoRow {
+  flex: 1 0 100%;
+
+  @include flex(flex-end);
+  padding: 15px;
+  box-sizing: border-box;
+  background-color: getColor("bg-user-menu");
+  border-top: 2px solid getColor("border-color");
+  
+  
+
+  
+  
+
+  @include tablet {
+    flex-basis: auto;
+    background-color: transparent;
+    border: none;
+  }
+}

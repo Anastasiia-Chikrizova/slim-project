@@ -1,0 +1,94 @@
+@import "../../shared/styles/common.scss";
+.mainDiv {
+  padding-left: 15px;
+  padding-right: 15px;
+  // background-color: #ffffff;
+  margin-top: 40px;
+  @include tablet {
+    margin-top: 82px;
+    padding-left: 87px;
+    padding-right: 76px;
+  }
+  @include desktop {
+    margin-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.title {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  // line-height: 26px;
+  color: getColor("text-primary");
+  max-width: 300px;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  @include tablet {
+    font-size: 30px;
+    line-height: 36px;
+    margin: 0;
+    margin-bottom: 60px;
+
+    max-width: 600px;
+  }
+  @include desktop {
+    font-size: 34px;
+    // line-height: 41px;
+  }
+}
+
+.form {
+  @include flex(center);
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 320px;
+  @include tablet {
+    margin: 0;
+  }
+  @include desktop {
+    max-width: 510px;
+  }
+}
+.fields {
+  @include flex(flex-start, flex-start);
+  flex-direction: column;
+
+  @include desktop {
+    margin-bottom: -40px;
+    max-height: 240px;
+  }
+  @include tablet {
+    margin-bottom: -40px;
+    max-height: 240px;
+  }
+  @include desktop {
+    max-height: 240px;
+  }
+}
+.field {
+  margin-bottom: 30px;
+  @include tablet {
+    margin-bottom: 40px;
+  }
+  @include desktop {
+    max-width: 240px;
+  }
+}
+.field:nth-child(-n + 3) {
+  @include tablet {
+    margin-right: 50px;
+  }
+}
+.button {
+  margin-bottom: 60px;
+  margin-top: 40px;
+  align-self: center;
+  @include tablet {
+    margin-top: 60px;
+    align-self: flex-start;
+  }
+  @include desktop {
+    align-self: flex-end;
+  }
+}

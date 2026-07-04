@@ -1,0 +1,26 @@
+@import "../../shared/styles/common.scss";
+.sideBarDiv {
+  padding-left: 15px;
+  padding-right: 15px;
+  // background-color: getColor("bg-secondary");
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  @include tablet {
+    // padding-left: 87px;
+    // padding-right: 76px;
+    flex-direction: row;
+    justify-content: space-between;
+    background-position: 128% 100%;
+    background-repeat: no-repeat;
+    background-image: url("../../shared/images/sidebar/RightSideBarImgTablet.png");
+  }
+  @include desktop {
+    flex-direction: column;
+    background-image: none;
+  }
+}
