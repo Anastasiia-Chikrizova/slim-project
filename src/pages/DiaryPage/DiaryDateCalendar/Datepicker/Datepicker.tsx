@@ -1,40 +1,33 @@
-import React, { useState } from "react";
-import DatePicker from "react-datepicker";
+import { useState, MouseEvent } from "react";
+import { DayPicker } from "react-day-picker";
+import "react-day-picker/dist/style.css";
 import styles from "./Datepicker.module.scss";
-import "react-datepicker/dist/react-datepicker.css";
 import { useDayInfoMutation } from "../../../../redux/api/apiSlice";
 import { format } from "date-fns";
 
 const Datepicker = () => {
-  const [startDate, setStartDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [isOpen, setIsOpen] = useState(false);
   const [dayInfo] = useDayInfoMutation();
 
-  const handleChange = (date: Date | null) => {
+  const handleSelect = (date: Date | undefined) => {
     if (!date) return;
-    const chousenDate = format(date, "yyyy-MM-dd");
-
-    setIsOpen(!isOpen);
-    setStartDate(date);
-    dayInfo({
-      date: chousenDate,
-    });
+    setIsOpen(false);
+    setSelectedDate(date);
+    dayInfo({ date: format(date, "yyyy-MM-dd") });
   };
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+
+  const handleToggle = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setIsOpen(!isOpen);
+    setIsOpen((prev) => !prev);
   };
 
   return (
     <div className={styles.DatePickerSection}>
-      <span className={styles.DiaryDate}>
-        {format(startDate, "dd-MM-yyyy")}
-      </span>
+      <span className={styles.DiaryDate}>{format(selectedDate, "dd-MM-yyyy")}</span>
 
-      <button onClick={handleClick} className={styles.DatePickerBtn}></button>
-      {isOpen && (
-        <DatePicker selected={startDate} onChange={handleChange} inline />
-      )}
+      <button onClick={handleToggle} className={styles.DatePickerBtn} type="button" />
+      {isOpen && <DayPicker mode="single" selected={selectedDate} onSelect={handleSelect} />}
     </div>
   );
 };

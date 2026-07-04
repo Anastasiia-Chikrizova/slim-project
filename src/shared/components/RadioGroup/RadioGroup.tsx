@@ -9,7 +9,7 @@ interface RadioGroupProps {
 
 const RadioGroup = ({ label, items = [] }: RadioGroupProps) => {
   const elements = items.map((item) => (
-    <RadioField key={item.label} {...item} />
+    <RadioField key={item.value} {...item} />
   ));
 
   return (

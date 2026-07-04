@@ -1,7 +1,6 @@
 interface MenuItem {
   id: string;
   to: string;
-  exact: boolean;
   text: string;
 }
 
@@ -10,28 +9,24 @@ export const items: { login: MenuItem[]; logout: MenuItem[] } = {
     {
       id: "1",
       to: "/diary",
-      exact: true,
-      text: "Дневник",
+      text: "Diary",
     },
     {
       id: "2",
       to: "/calculator",
-      exact: true,
-      text: "Калькулятор",
+      text: "Calculator",
     },
   ],
   logout: [
     {
       id: "3",
       to: "/login",
-      exact: true,
-      text: "Вход",
+      text: "Log in",
     },
     {
       id: "4",
       to: "/registration",
-      exact: true,
-      text: "Регистрация",
+      text: "Sign up",
     },
   ],
 };

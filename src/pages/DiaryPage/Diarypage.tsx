@@ -1,7 +1,7 @@
 import DiaryProductsList from "./DiaryProductsList";
 import DiaryAddProductForm from "./DiaryAddProductForm";
 import DiaryDateCalendar from "./DiaryDateCalendar";
-import Modal from "./Modal";
+import Modal from "../../shared/components/Modal";
 
 import { useState } from "react";
 
@@ -15,28 +15,24 @@ const DiaryPage = () => {
     setIsOpen(true);
   };
 
+  const handleCloseModal = () => {
+    setIsOpen(false);
+  };
+
   return (
     <AuthorizedPageContainer>
       <div className={styles.DiaryConteiner}>
-        {isOpen ? (
-          <Modal
-            onClose={() => {
-              setIsOpen(false);
-            }}
-          />
-        ) : (
-          <>
-            <div className={styles.DiaryCalendar}>
-              <DiaryDateCalendar />
-            </div>
-            <div className={styles.visuallyHidden}>
-              <DiaryAddProductForm />
-            </div>
-            <DiaryProductsList />
-            <button onClick={handleOpenModal} className={styles.OpenFormButton}>
-              +
-            </button>
-          </>
+        <div className={styles.DiaryCalendar}>
+          <DiaryDateCalendar />
+        </div>
+        <DiaryProductsList />
+        <button onClick={handleOpenModal} className={styles.OpenFormButton}>
+          +
+        </button>
+        {isOpen && (
+          <Modal onClose={handleCloseModal}>
+            <DiaryAddProductForm onSuccess={handleCloseModal} />
+          </Modal>
         )}
       </div>
     </AuthorizedPageContainer>

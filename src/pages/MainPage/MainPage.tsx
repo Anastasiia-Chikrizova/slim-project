@@ -3,9 +3,10 @@ import styles from "./MainPage.module.scss";
 import Button from "../../shared/components/Button";
 import TextField from "../../shared/components/TextField";
 import RadioGroup from "../../shared/components/RadioGroup";
-import Modal from "../../client/Modal";
+import Modal from "../../shared/components/Modal";
 import ModalInfo from "../../shared/components/ModalInfo";
 import { useDailyRateMutation } from "../../redux/api/apiSlice";
+import { DailyRateRequest } from "../../redux/api/contracts";
 
 interface CalcState {
   calories: number | null;
@@ -24,12 +25,12 @@ const MainPage = () => {
   const [dailyRate] = useDailyRateMutation();
 
   const calcAction = async (_prevState: CalcState, formData: FormData): Promise<CalcState> => {
-    const payload = {
+    const payload: DailyRateRequest = {
       height: Number(formData.get("height")),
       age: Number(formData.get("age")),
       weight: Number(formData.get("weight")),
       desiredWeight: Number(formData.get("desiredWeight")),
-      bloodType: Number(formData.get("bloodType")),
+      bloodType: Number(formData.get("bloodType")) as DailyRateRequest["bloodType"],
     };
     try {
       const { dailyRate: rate, notAllowedProducts } = await dailyRate(payload).unwrap();
@@ -53,7 +54,7 @@ const MainPage = () => {
   return (
     <div className={styles.main}>
       <div className="container">
-        <h1 className={styles.title}>Просчитай свою суточную норму каллорий прямо сейчас</h1>
+        <h1 className={styles.title}>Calculate your daily calorie rate right now</h1>
         {state.showModal && (
           <Modal onClose={closeModal}>
             <ModalInfo products={state.products} calories={state.calories} />
@@ -62,28 +63,28 @@ const MainPage = () => {
         <form action={action} className={styles.form}>
           <div className={styles.fields}>
             <div className={styles.field}>
-              <TextField required name="height" placeholder="Рост" min="100" max="250" type="number" />
+              <TextField required name="height" placeholder="Height" min="100" max="250" type="number" />
             </div>
             <div className={styles.field}>
-              <TextField required name="age" placeholder="Возраст" min="18" max="100" type="number" />
+              <TextField required name="age" placeholder="Age" min="18" max="100" type="number" />
             </div>
             <div className={styles.field}>
-              <TextField required name="weight" placeholder="Текущий вес" min="0" max="500" type="number" />
+              <TextField required name="weight" placeholder="Current weight" min="0" max="500" type="number" />
             </div>
             <div className={styles.field}>
               <TextField
                 required
                 name="desiredWeight"
-                placeholder="Желаемый вес"
+                placeholder="Desired weight"
                 min="0"
                 max="500"
                 type="number"
               />
             </div>
-            <RadioGroup label="Группа крови *" items={bloodTypeItems} />
+            <RadioGroup label="Blood type *" items={bloodTypeItems} />
           </div>
           <Button
-            text={isPending ? "Загрузка..." : "Похудеть"}
+            text={isPending ? "Loading..." : "Lose weight"}
             className={styles.button}
             type="submit"
           />

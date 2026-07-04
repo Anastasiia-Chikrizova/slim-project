@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Outlet } from "react-router-dom";
 
 import styles from "./Routes.module.scss";
 import PrivateRoute from "../shared/components/PrivateRoute";
@@ -14,59 +14,34 @@ const MainPage = lazy(() => import("../pages/MainPage/MainPage"));
 const RegisterPage = lazy(() => import("../pages/RegisterPage/RegisterPage"));
 const Navbar = lazy(() => import("../client/Navbar/Navbar"));
 
+interface LayoutProps {
+  className: string;
+}
+
+const Layout = ({ className }: LayoutProps) => (
+  <div className={className}>
+    <Navbar />
+    <Outlet />
+  </div>
+);
+
 const AppRoutes = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
         <Route element={<PublicRoute restricted redirectTo="/calculator" />}>
-          <Route
-            path="/"
-            element={
-              <div className={styles.App}>
-                <Navbar />
-                <MainPage />
-              </div>
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <div className={styles.App}>
-                <Navbar />
-                <LoginPage />
-              </div>
-            }
-          />
-          <Route
-            path="/registration"
-            element={
-              <div className={styles.App}>
-                <Navbar />
-                <RegisterPage />
-              </div>
-            }
-          />
+          <Route element={<Layout className={styles.App} />}>
+            <Route path="/" element={<MainPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/registration" element={<RegisterPage />} />
+          </Route>
         </Route>
 
         <Route element={<PrivateRoute redirectTo="/login" />}>
-          <Route
-            path="/diary"
-            element={
-              <div className={styles.sideBarDiv}>
-                <Navbar />
-                <DiaryPage />
-              </div>
-            }
-          />
-          <Route
-            path="/calculator"
-            element={
-              <div className={styles.sideBarDiv}>
-                <Navbar />
-                <CalculatorPage />
-              </div>
-            }
-          />
+          <Route element={<Layout className={styles.sideBarDiv} />}>
+            <Route path="/diary" element={<DiaryPage />} />
+            <Route path="/calculator" element={<CalculatorPage />} />
+          </Route>
         </Route>
       </Routes>
     </Suspense>

@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { ReactComponent as MenuBtn } from "../../../../shared/images/svg/burgerMenu.svg";
 import { ReactComponent as CloseBtn } from "../../../../shared/images/svg/close.svg";
-import Modal from "../../Modal/Modal";
+import Modal from "../../../../shared/components/Modal";
 import styles from "./BurgerMenu.module.scss";
 import { items } from "../items";
-import BurgerMenuItem from "../BurgerMenu/BurgerMenuItem";
+import MenuItem from "../MenuItem";
 
 const BurgerMenu = () => {
   const [showModal, setShowModal] = useState(false);
@@ -18,7 +18,13 @@ const BurgerMenu = () => {
   };
 
   const loginMenu = items.login.map(({ id, ...props }) => (
-    <BurgerMenuItem closeModal={closeModal} key={id} {...props} />
+    <MenuItem
+      key={id}
+      {...props}
+      onNavigate={closeModal}
+      className={styles.navlink}
+      activeClassName={styles.navlinkActive}
+    />
   ));
 
   const menu = <div className={styles.modalItems}>{loginMenu}</div>;
@@ -28,7 +34,11 @@ const BurgerMenu = () => {
       <button type="button" onClick={toggleModal} className={styles.burgerBtn}>
         {showModal ? <CloseBtn /> : <MenuBtn />}
       </button>
-      {showModal && <Modal>{menu}</Modal>}
+      {showModal && (
+        <Modal onClose={closeModal} variant="fullscreen" hideCloseButton>
+          {menu}
+        </Modal>
+      )}
     </div>
   );
 };

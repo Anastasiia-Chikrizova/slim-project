@@ -17,7 +17,7 @@ const UserInfo = () => {
         className={styles.btn}
         onClick={() => logOut(undefined)}
       >
-        Выйти
+        Log out
       </button>
     </div>
   );

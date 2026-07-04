@@ -7,6 +7,7 @@ import AuthorizedPageContainer from "../../shared/containerPage/AuthorizedPage/A
 import { getUserId } from "../../redux/calendar/summaries/summaries-selectors";
 import { useSelector } from "react-redux";
 import { useDailyRateByIdMutation } from "../../redux/api/apiSlice";
+import { DailyRateByIdRequest } from "../../redux/api/contracts";
 
 interface CalcState {
   success: boolean;
@@ -25,19 +26,19 @@ const CalculatorPage = () => {
   const idUser = useSelector(getUserId);
 
   const calcAction = async (_prevState: CalcState, formData: FormData): Promise<CalcState> => {
-    const ccc = {
+    const ccc: DailyRateByIdRequest = {
       height: Number(formData.get("height")),
       age: Number(formData.get("age")),
       weight: Number(formData.get("weight")),
       desiredWeight: Number(formData.get("desiredWeight")),
-      bloodType: Number(formData.get("bloodType")),
+      bloodType: Number(formData.get("bloodType")) as DailyRateByIdRequest["bloodType"],
     };
     try {
-      await dailyRateById({ ccc, idUser }).unwrap();
+      await dailyRateById({ ccc, idUser: idUser ?? "" }).unwrap();
       return { success: true, error: null };
     } catch (error) {
       console.error(error);
-      return { success: false, error: "Ошибка при расчёте" };
+      return { success: false, error: "Failed to calculate daily rate" };
     }
   };
 
@@ -46,25 +47,25 @@ const CalculatorPage = () => {
   return (
     <AuthorizedPageContainer>
       <div className={styles.mainDiv}>
-        <h1 className={styles.title}>Узнай свою суточную норму калорий</h1>
+        <h1 className={styles.title}>Find out your daily calorie rate</h1>
         <form action={action} className={styles.form}>
           <div className={styles.fields}>
             <div className={styles.field}>
-              <TextField required name="height" placeholder="Рост" />
+              <TextField required name="height" placeholder="Height" />
             </div>
             <div className={styles.field}>
-              <TextField required name="age" placeholder="Возраст" />
+              <TextField required name="age" placeholder="Age" />
             </div>
             <div className={styles.field}>
-              <TextField required name="weight" placeholder="Текущий вес" />
+              <TextField required name="weight" placeholder="Current weight" />
             </div>
             <div className={styles.field}>
-              <TextField required name="desiredWeight" placeholder="Желаемый вес" />
+              <TextField required name="desiredWeight" placeholder="Desired weight" />
             </div>
-            <RadioGroup label="Группа крови *" items={bloodTypeItems} />
+            <RadioGroup label="Blood type *" items={bloodTypeItems} />
           </div>
           <Button
-            text={isPending ? "Загрузка..." : "Похудеть"}
+            text={isPending ? "Loading..." : "Lose weight"}
             className={styles.button}
             type="submit"
           />

@@ -1,20 +1,14 @@
-import { nanoid } from "nanoid";
-import { ChangeEvent } from "react";
+import { InputHTMLAttributes } from "react";
+import useUniqueString from "../../hooks/useUniqueString";
 import styles from "./TextField.module.scss";
 
-interface TextFieldProps {
+interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   label?: string;
-  type?: string;
-  placeholder?: string;
-  required?: boolean;
-  value?: string;
-  [key: string]: unknown;
 }
 
 const TextField = ({ label, required = false, type = "text", placeholder, ...field }: TextFieldProps) => {
-  const id = nanoid();
+  const id = useUniqueString();
   const displayPlaceholder = required && placeholder ? `${placeholder} *` : placeholder;
 
   return (

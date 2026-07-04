@@ -38,7 +38,7 @@ const Logo = ({
           srcSet={logoMobile + " 1x," + logoMobile2x + " 2x"}
           media="(max-width:767px)"
         />
-        <img className="default" src={logoMobile} alt="Логотип" />
+        <img className="default" src={logoMobile} alt="Logo" />
       </picture>
     </>
   );

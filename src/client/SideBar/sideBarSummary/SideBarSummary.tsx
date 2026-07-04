@@ -21,30 +21,30 @@ const SideBarSummary = () => {
   return (
     <>
       <div className={styles.summaryDiv}>
-        <h2 className={styles.summaryTitle}>Сводка за {currentDate}</h2>
+        <h2 className={styles.summaryTitle}>Summary for {currentDate}</h2>
         <ul className={styles.summaryList}>
           <li className={styles.summaryItem}>
-            Осталось{" "}
+            Left{" "}
             <span className={styles.summary_kcal}>
-              {Math.round(summaries.kcalLeft)} ккал
+              {Math.round(summaries.kcalLeft)} kcal
             </span>
           </li>
           <li className={styles.summaryItem}>
-            Употреблено{" "}
+            Consumed{" "}
             <span className={styles.summary_kcal}>
-              {Math.round(summaries.kcalConsumed)} ккал
+              {Math.round(summaries.kcalConsumed)} kcal
             </span>
           </li>
           <li className={styles.summaryItem}>
-            Дневная норма{" "}
+            Daily rate{" "}
             <span className={styles.summary_kcal}>
-              {Math.round(summaries.dailyRate)} ккал
+              {Math.round(summaries.dailyRate)} kcal
             </span>
           </li>
           <li className={styles.summaryItem}>
-            n% от нормы{" "}
+            % of daily rate{" "}
             <span className={styles.summary_kcal}>
-              {Math.round(summaries.percentsOfDailyRate)} ккал
+              {Math.round(summaries.percentsOfDailyRate)} kcal
             </span>
           </li>
         </ul>

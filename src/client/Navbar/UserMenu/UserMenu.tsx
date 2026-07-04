@@ -1,15 +1,25 @@
-import UserMenuItem from "./UserMenuItem";
+import MenuItem from "./MenuItem";
 import { items } from "./items";
 import useMedia from "../../../shared/hooks/useMedia";
 import BurgerMenu from "./BurgerMenu/BurgerMenu";
 import styles from "./UserMenu.module.scss";
 
 const loginMenu = items.login.map(({ id, ...props }) => (
-  <UserMenuItem key={id} {...props} />
+  <MenuItem
+    key={id}
+    {...props}
+    className={styles.navlink}
+    activeClassName={styles.navlinkActive}
+  />
 ));
 
 const logoutMenu = items.logout.map(({ id, ...props }) => (
-  <UserMenuItem key={id} {...props} />
+  <MenuItem
+    key={id}
+    {...props}
+    className={styles.navlink}
+    activeClassName={styles.navlinkActive}
+  />
 ));
 
 interface UserMenuProps {
