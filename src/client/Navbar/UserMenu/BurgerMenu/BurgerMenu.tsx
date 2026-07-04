@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { ReactComponent as MenuBtn } from "../../../../shared/images/svg/burgerMenu.svg";
-import { ReactComponent as CloseBtn } from "../../../../shared/images/svg/close.svg";
+import MenuBtn from "../../../../shared/images/svg/burgerMenu.svg?react";
+import CloseBtn from "../../../../shared/images/svg/close.svg?react";
 import Modal from "../../../../shared/components/Modal";
 import styles from "./BurgerMenu.module.scss";
 import { items } from "../items";
