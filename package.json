@@ -2,6 +2,21 @@
   "name": "slim-mom",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "vite --mode development",
+    "dev": "vite --mode development",
+    "dev:staging": "vite --mode staging",
+    "build:dev": "tsc -b && vite build --mode development",
+    "build:staging": "tsc -b && vite build --mode staging",
+    "build:production": "tsc -b && vite build --mode production",
+    "preview:dev": "vite preview --mode development",
+    "preview:staging": "vite preview --mode staging",
+    "preview:production": "vite preview --mode production",
+    "test": "vitest",
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx,scss,css}\""
+  },
   "dependencies": {
     "@reduxjs/toolkit": "^2.3.0",
     "@testing-library/jest-dom": "^6.4.6",
@@ -20,18 +35,6 @@
     "redux-persist": "^6.0.0",
     "sass": "^1.89.0",
     "web-vitals": "^4.2.4"
-  },
-  "scripts": {
-    "start": "vite",
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "preview": "vite preview",
-    "test": "vitest",
-    "predeploy": "npm run build",
-    "deploy": "netlify deploy -p",
-    "lint": "eslint src --ext .ts,.tsx",
-    "lint:fix": "eslint src --ext .ts,.tsx --fix",
-    "format": "prettier --write \"src/**/*.{ts,tsx,scss,css}\""
   },
   "browserslist": {
     "production": [

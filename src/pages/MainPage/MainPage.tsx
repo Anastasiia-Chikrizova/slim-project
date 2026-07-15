@@ -54,6 +54,7 @@ const MainPage = () => {
   return (
     <div className={styles.main}>
       <div className="container">
+        <span className={styles.envBadge}>{import.meta.env.VITE_APP_ENV}</span>
         <h1 className={styles.title}>Calculate your daily calorie rate right now</h1>
         {state.showModal && (
           <Modal onClose={closeModal}>
