@@ -1,0 +1,57 @@
+// @mixin desktop {
+//   @media (max-width: $desktop) {
+//     @content;
+//   }
+// }
+// @mixin tablet {
+//   @media (max-width: $desktop - 1) {
+//     @content;
+//   }
+// }
+// @mixin mobile {
+//   @media (max-width: $tablet - 1) {
+//     @content;
+//   }
+// }
+
+@mixin desktop {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+// @mixin mobile {
+//   @media (max-width: $tablet - 1) {
+//     @content;
+//   }
+// }
+
+// example:
+// body {
+// //  @include tablet {
+//       background-color: purple;
+//    }
+// }
+
+@mixin flex($main-axis: flex-start, $main-cross: stretch) {
+  display: flex;
+  flex-wrap: wrap;
+
+  @if $main-axis != flex-start {
+    justify-content: $main-axis;
+  }
+
+  @if $main-cross != stretch {
+    align-items: $main-cross;
+  }
+}
+
+// example:
+// body {
+//  @include flex(center, center);
+//  margin-bottom: 53px;
+// }

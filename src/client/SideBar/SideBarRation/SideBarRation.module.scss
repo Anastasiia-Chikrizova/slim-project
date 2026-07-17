@@ -1,0 +1,28 @@
+@import "../../../shared/styles/common.scss";
+.rationWrapper {
+  max-width: 350px;
+  @include tablet {
+    max-width: 310px;
+    margin-top: 91px;
+  }
+  @include desktop {
+    margin-top: 60px;
+    padding-bottom: 162px;
+  }
+}
+
+.rationTitle {
+  margin-bottom: 20px;
+}
+
+.ration {
+  font-weight: 400;
+  color: getColor("text-secondary");
+  text-align: justify;
+  line-height: 33px;
+  letter-spacing: 0.04em;
+  @include tablet {
+  }
+  @include desktop {
+  }
+}

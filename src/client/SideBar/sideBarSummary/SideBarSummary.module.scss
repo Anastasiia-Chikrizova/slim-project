@@ -1,0 +1,49 @@
+@import "../../../shared/styles/common.scss";
+.summaryDiv {
+  margin-right: auto;
+  margin-bottom: 40px;
+  max-width: 350px;
+  @include tablet {
+    width: 310px;
+    margin-top: 91px;
+    margin-right: 60px;
+  }
+
+  @include desktop {
+    // margin-top: 82px;
+    margin-top: 0;
+    margin-right: 0;
+    width: 330px;
+  }
+}
+
+.summaryTitle {
+  padding-top: 40px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.2;
+  @include tablet {
+    padding: 0;
+  }
+
+  @include desktop {
+  }
+}
+
+.summaryList {
+  color: getColor("text-secondary");
+  font-weight: 400;
+  min-width: 280px;
+}
+
+.summaryItem {
+  display: flex;
+  justify-content: space-between;
+  &:not(:last-child) {
+    margin-bottom: 23px;
+  }
+}
+
+.summary_kcal {
+}

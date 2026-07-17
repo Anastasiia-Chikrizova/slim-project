@@ -1,0 +1,98 @@
+@media screen and (min-width: 320px) {
+  .products {
+    &Item {
+      font-family: Verdana;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 1.2;
+      letter-spacing: 0.04em;
+      color: #212121;
+      padding-top: 20px;
+      display: flex;
+    }
+
+    &Name {
+      padding-bottom: 10px;
+      margin-right: 10px;
+      border-bottom: 1px solid #e0e0e0;
+      text-align: left;
+      width: 136px;
+    }
+
+    &Weight {
+      padding-bottom: 10px;
+      margin-right: 10px;
+      border-bottom: 1px solid #e0e0e0;
+      text-align: center;
+      width: 50px;
+    }
+
+    &Kcal {
+      padding-bottom: 10px;
+      margin-right: 10px;
+      border-bottom: 1px solid #e0e0e0;
+      text-align: center;
+      width: 60px;
+    }
+
+    &Button {
+      display: flex;
+      // justify-content: start;
+      font-family: Verdana;
+      font-weight: 400;
+      color: #9b9faa;
+      font-size: 22px;
+      line-height: 1;
+      padding: 0;
+      margin: 0;
+      border: none;
+      background: none;
+      transform: rotate(45deg);
+    }
+
+    &Units {
+      font-size: 10px;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .products {
+    &Item {
+      padding-top: 15px;
+    }
+    &Name {
+      padding-bottom: 20px;
+      margin-right: 30px;
+      border-bottom: 1px solid #e0e0e0;
+      text-align: left;
+      width: 240px;
+    }
+    &Weight {
+      padding-bottom: 20px;
+      margin-right: 30px;
+      border-bottom: 1px solid #e0e0e0;
+      text-align: right;
+      width: 105px;
+    }
+    &Kcal {
+      padding-bottom: 10px;
+      margin-right: 30px;
+      border-bottom: 1px solid #e0e0e0;
+      text-align: right;
+      width: 105px;
+    }
+
+    &Button {
+      font-size: 28px;
+      font-weight: 400;
+    }
+
+    &Units {
+      font-size: 14px;
+    }
+  }
+}
+@media screen and (min-width: 1280px) {
+}

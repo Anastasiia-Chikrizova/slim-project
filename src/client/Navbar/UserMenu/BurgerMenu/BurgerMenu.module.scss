@@ -1,0 +1,47 @@
+@import "../../../../shared//styles/common";
+
+.burgerBtn {
+  margin-right: 15px;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+
+  //   @include desktop {
+  //     display: none;
+  //   }
+}
+
+.navlink {
+  margin-bottom: 38px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.2;
+  text-align: center;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+
+  color: getColor("text-secondary");
+
+  @include tablet {
+    margin-bottom: 25px;
+    font-size: 24px;
+  }
+}
+
+.navlinkActive {
+  @extend .navlink;
+  color: getColor("text-white");
+}
+
+.modalItems {
+  display: flex;
+  flex-direction: column;
+  padding-top: 60px;
+
+  @include tablet {
+    padding-top: 108px;
+  }
+}

@@ -1,0 +1,53 @@
+@import "../../shared/styles/common.scss";
+
+.title {
+  text-align: center;
+  font-size: 14px;
+  line-height: 0.92em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 118px;
+  color: getColor("accent");
+  font-weight: 700;
+  padding-top: 30px;
+  @include tablet {
+    text-align: start;
+  }
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 auto;
+  max-width: 300px;
+  justify-content: space-between;
+  @include tablet {
+    margin: 0;
+    margin-right: auto;
+    // width: 230px;
+  }
+}
+.textField:not(:last-child) {
+  margin-bottom: 40px;
+}
+.fieldsBox {
+  margin-bottom: 60px;
+}
+.btnBox {
+  display: flex;
+  margin: 0 auto 0;
+  flex-direction: column;
+
+  justify-content: space-between;
+  align-items: center;
+  @include tablet {
+    flex-direction: row;
+  }
+}
+.logBtn {
+  margin-bottom: 30px;
+  @include tablet {
+    margin: 0;
+    margin-right: 30px;
+  }
+}

@@ -1,0 +1,23 @@
+@import "../../styles/common.scss";
+
+.radio {
+  &Group {
+    @include flex(flex-start, flex-start);
+    flex-direction: column;
+  }
+  &Buttons {
+    @include flex(flex-start, center);
+    flex-direction: row;
+    margin-left: -30px;
+  }
+}
+
+.label {
+  font-family: $font-primary;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  color: getColor("text-secondary");
+  margin-bottom: 19px;
+}
