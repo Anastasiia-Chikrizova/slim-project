@@ -2,12 +2,11 @@ FROM node:22-alpine AS base
 
 WORKDIR /app
 
+COPY package.json yarn.lock ./
+RUN yarn --frozen-lockfile
+
 COPY . .
 
-RUN yarn
-
-ENV VITE_APP_ENV="development"
-
-EXPOSE 80
+EXPOSE 3000
 
 ENTRYPOINT ["yarn", "dev"]
